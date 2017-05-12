@@ -6,7 +6,7 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
+// TEMPORARY CORS FIX
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
