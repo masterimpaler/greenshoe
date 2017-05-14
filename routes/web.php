@@ -21,4 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'SearchController@index');
 
+Route::get('/show', 'SearchController@show');
+
 Route::get('/search', 'SearchController@livesearch');

@@ -24,18 +24,12 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+    public function show() {
 
-//    public function search()
-//    {
-//        $data= Input::all();
-//
-//        $query = $data['query'];
-//
-//        // Search DB for records matching the query sent by the user.
-//        $output = DB::table('debtors')->where('ID_number' OR 'mobile', 'LIKE', '%'.$query.'%')->get();
-//
-//        return Response::json(['result'   => $output]);
-//    }
+        $debtors = Debtor::all();
+
+        return view('search.show', compact('debtors'));
+    }
 
     /**
      * @param Request $request
