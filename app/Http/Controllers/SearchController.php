@@ -15,6 +15,14 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     public function index()
     {
         return view('search.index');
@@ -38,6 +46,9 @@ class SearchController extends Controller
      */
     public function download() {
 
+        //$debtors = DB::table('debtors')->get();
+
+        //get debtor list from database
         $debtors = Debtor::all();
 
         $debtorsArray = [];
@@ -48,19 +59,21 @@ class SearchController extends Controller
             $debtorsArray[] = $debtor->toArray();
         }
 
+        //dd($debtorsArray);
+
         Excel::create('debtors', function($excel) use ($debtorsArray) {
 
             // Set the spreadsheet title, creator, and description
-            $excel->setTitle('Debtors');
-            $excel->setCreator('John')->setCompany('Nada');
-            $excel->setDescription('debtors file');
+//            $excel->setTitle('Debtors');
+//            $excel->setCreator('John')->setCompany('Nada');
+//            $excel->setDescription('debtors file');
 
             // Build the spreadsheet, passing in the payments array
             $excel->sheet('sheet1', function($sheet) use ($debtorsArray) {
                 $sheet->fromArray($debtorsArray, null, 'A1', false, false);
             });
 
-        })->download('xls');
+        })->download('csv');
 
 
     }
