@@ -15,7 +15,8 @@
 //    return view('welcome');
 //});
 
-Auth::routes();
+//Auth::routes();
+Route::Auth();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -25,4 +26,4 @@ Route::get('/show', 'SearchController@show');
 
 Route::get('/download', 'SearchController@download');
 
-Route::get('/search', 'SearchController@livesearch');
+Route::get('/livesearch', 'SearchController@livesearch');
