@@ -9,10 +9,12 @@
                     <div class="panel-heading">Entire Debtor Report</div>
 
                     <div class="panel-body">
-                        <button type="button" class="btn btn-success">
-                            <span class="glyphicon glyphicon-download-alt"></span>
-                            Download Report
-                        </button>
+                        <a href=" {{ url('/download') }}" class="">
+                            <button type="button" class="btn btn-success">
+                                <span class="glyphicon glyphicon-download-alt"></span>
+                                Download Report
+                            </button>
+                        </a>
                         <table class="table table-hover">
                             <thead>
                               <tr>
