@@ -8,7 +8,6 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-
                     <h1 align="center"> Welcome to GreenShoe Debtor Portal</h1>
                     <br><br>
                     <div class="row">
