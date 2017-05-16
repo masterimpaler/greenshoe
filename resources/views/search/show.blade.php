@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div style="width: 100%;">
                 <div class="panel panel-default">
                     <div class="panel-heading">Entire Debtor Report</div>
 
@@ -18,8 +18,14 @@
                         <table class="table table-hover">
                             <thead>
                               <tr>
+                                <th>No</th>
                                 <th>Name</th>
-                                <th>Gender</th>
+                                <th>ID Number</th>
+                                <th>Account Number</th>
+                                <th>Loan Amount</th>
+                                <th>Loan Balance</th>
+                                <th>Issue date</th>
+                                <th>Due date</th>
                                 <th>Mobile</th>
                               </tr>
                             </thead>
@@ -28,9 +34,15 @@
                                 <tbody>
                                 @foreach( $debtors as $key=>$debtor)
                                   <tr>
-                                    <td>{{ $debtor->names }}</td>
-                                    <td>{{ $debtor->gender }}</td>
-                                    <td>{{ $debtor->mobile }}</td>
+                                    <td>{{ $debtor->id }}</td>
+                                    <td>{{ $debtor->cust_name }}</td>
+                                    <td>{{ $debtor->cust_id }}</td>
+                                    <td>{{ $debtor->cust_acno }}</td>
+                                    <td>{{ $debtor->loan_amount }}</td>
+                                    <td>{{ $debtor->loan_balance }}</td>
+                                    <td>{{ $debtor->loan_issue_date }}</td>
+                                    <td>{{ $debtor->loan_due_date }}</td>
+                                    <td>{{ $debtor->cust_mobile_number }}</td>
                                   </tr>
                                 @endforeach
                                 </tbody>

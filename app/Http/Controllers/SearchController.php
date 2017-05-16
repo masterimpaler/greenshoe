@@ -35,7 +35,8 @@ class SearchController extends Controller
      */
     public function show() {
 
-        $debtors = Debtor::all();
+        //$debtors = Debtor::all();
+        $debtors = DB::table('tbl_due_listing')->get();
 
         return view('search.show', compact('debtors'));
     }
@@ -49,14 +50,16 @@ class SearchController extends Controller
         //$debtors = DB::table('debtors')->get();
 
         //get debtor list from database
-        $debtors = Debtor::all();
+        //$debtors = Debtor::all();
+        $debtors = DB::table('tbl_due_listing')->get();
 
+        dd($debtors);
         $debtorsArray = [];
 
-        $debtorsArray[] = ['id', 'names', 'ID_number', 'mobile', 'amount', 'gender', 'created_at', 'updated_at'];
+        $debtorsArray[] = ['id', 'Names', 'ID_number', 'Account No', 'Loan amount', 'Loan balance', 'Loan Issue date', 'Loan Due date', 'Mobile'];
 
         foreach ($debtors as $debtor){
-            $debtorsArray[] = $debtor->toArray();
+            $debtorsArray[] = $debtor;
         }
 
         //dd($debtorsArray);
@@ -87,17 +90,22 @@ class SearchController extends Controller
         if ($request->ajax()){
             $output = "";
 
-            $debtors = DB::table('debtors')->where('ID_number', 'LIKE', '%'.$request->search.'%')
-                                           ->orWhere('mobile', 'LIKE', '%'.$request->search.'%')->get();
+            $debtors = DB::table('tbl_due_listing')->where('cust_id', 'LIKE', '%'.$request->search.'%')
+                                           ->orWhere('cust_mobile_number', 'LIKE', '%'.$request->search.'%')->get();
 
             if ($debtors){
 
                 foreach ($debtors as $key => $debtor){
                     $output.='<tr>'.
-                        '<td>'.$debtor->names.'</td>'.
-                        '<td>'.$debtor->gender.'</td>'.
-                        '<td>'.$debtor->ID_number.'</td>'.
-                        '<td>'.$debtor->mobile.'</td>'.
+                        '<td>'.$debtor->id.'</td>'.
+                        '<td>'.$debtor->cust_name.'</td>'.
+                        '<td>'.$debtor->cust_id.'</td>'.
+                        '<td>'.$debtor->cust_acno.'</td>'.
+                        '<td>'.$debtor->loan_amount.'</td>'.
+                        '<td>'.$debtor->loan_balance.'</td>'.
+                        '<td>'.$debtor->loan_issue_date.'</td>'.
+                        '<td>'.$debtor->loan_due_date.'</td>'.
+                        '<td>'.$debtor->cust_mobile_number.'</td>'.
                         '<tr>';
                 }
 

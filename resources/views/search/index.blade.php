@@ -27,12 +27,17 @@
 
                         <table class="table table-bordered">
                             <thead>
-                            <tr>
-                                <th>Names</th>
-                                <th>Gender</th>
-                                <th>ID Number</th>
-                                <th>Mobile</th>
-                            </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>ID Number</th>
+                                    <th>Account Number</th>
+                                    <th>Loan Amount</th>
+                                    <th>Loan Balance</th>
+                                    <th>Issue date</th>
+                                    <th>Due date</th>
+                                    <th>Mobile</th>
+                                </tr>
                             </thead>
                             <tbody>
 
@@ -48,9 +53,6 @@
     </div>
 @endsection
 
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--}}
-{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
-
 @section('script')
     $('#search').on('keyup', function () {
     $value = $(this).val();
@@ -61,19 +63,6 @@
     success:function (data) {
     $('tbody').html(data);
     }
-
-
-
     })
     })
 @endsection
-{{--<script type="text/javascript">--}}
-    {{----}}
-{{--</script>--}}
-{{--@section('scripts')--}}
-
-    {{--<script type="text/javascript">--}}
-
-    {{--</script>--}}
-
-{{--@endsection--}}
