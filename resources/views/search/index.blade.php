@@ -8,7 +8,20 @@
                     <div class="panel-heading">Dashboard</div>
 
                     <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="{{ url('/home') }}">
+                                <button type="button" class="btn btn-primary center-block">Home</button>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-md-4"></div>
+                            <div class="col-xs-6 col-md-4">
+                                <a href="{{ url('/show') }}">
+                                <button type="button" class="btn btn-primary center-block" >Download</button>
+                                </a>
+                            </div>
 
+                        </div>
                         <!-- search box container starts  -->
                         <div class="search">
                             <h3 class="text-center title-color">GreenShoe Debtor search portal</h3>
