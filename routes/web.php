@@ -26,4 +26,4 @@ Route::get('/show', 'SearchController@show');
 
 Route::get('/download', 'SearchController@download');
 
-Route::get('/search', 'SearchController@livesearch');
+Route::get('/search', 'SearchController@search');

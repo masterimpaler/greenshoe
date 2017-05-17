@@ -25,6 +25,7 @@ class SearchController extends Controller
 
     public function index()
     {
+        //redrects to this location
         return view('search.index');
     }
 
@@ -35,9 +36,12 @@ class SearchController extends Controller
      */
     public function show() {
 
-        //$debtors = Debtor::all();
+        //$debtors = Debtor::all(); Eloquent way
+
+        //get all records from database
         $debtors = DB::table('tbl_due_listing')->get();
 
+        //pass the records to the view
         return view('search.show', compact('debtors'));
     }
 
@@ -56,14 +60,17 @@ class SearchController extends Controller
         //dd($debtors);
         $debtorsArray = [];
 
+        //Excel sheet titles
         $debtorsArray[] = ['id', 'Names', 'ID number', 'Account No', 'Loan amount', 'Loan balance', 'Loan Issue date', 'Loan Due date', 'Mobile'];
 
         foreach ($debtors as $debtor){
+            // Enter each record to the array. Type casting the records to type array
             $debtorsArray[] = (array) $debtor;
         }
 
         //dd($debtorsArray);
 
+        // The magic of downloading the records to a stylesheet.
         Excel::create('debtors', function($excel) use ($debtorsArray) {
 
             // Set the spreadsheet title, creator, and description
@@ -85,8 +92,9 @@ class SearchController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function livesearch(Request $request)
+    public function search(Request $request)
     {
+        //receives request from ajax on the view, searches those values and gives a response to the view
         if ($request->ajax()){
             $output = "";
 

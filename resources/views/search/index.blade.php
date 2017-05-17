@@ -16,6 +16,7 @@
                             <div class="row">
                                 <div class="col-lg-10 col-lg-offset-1">
                                     <div class="input-group">
+                                        {{ csrf_field() }}
                                         <span class="input-group-addon" style="color: white; background-color: #4dff64;">ID/MOBILE SEARCH</span>
                                         <input type="text" autocomplete="off" id="search" name="search" class="form-control input-lg" placeholder="Enter ID or Mobile number">
                                     </div>
@@ -24,7 +25,8 @@
                         </div>
 
                         <br>
-
+                        <!-- This file displays a search form that filters through records as an ID or mobile bumber
+                              is entered by the user in real time.-->
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -53,6 +55,8 @@
     </div>
 @endsection
 
+<!-- This ajax code listens for keyups and takes in the value that's already been entered and sends it
+       to the search controller in real time-->
 @section('script')
     $('#search').on('keyup', function () {
     $value = $(this).val();
@@ -61,7 +65,11 @@
     url  : '{{URL::to('search') }}',
     data : {'search':$value},
     success:function (data) {
-    $('tbody').html(data);
+    if(data.length > 0) {
+    console.log(data);
+    } else {
+    console.log('Nothing in the DB');
+    }
     }
     })
     })
