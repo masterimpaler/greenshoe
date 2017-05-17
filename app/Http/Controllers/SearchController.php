@@ -56,7 +56,7 @@ class SearchController extends Controller
         //dd($debtors);
         $debtorsArray = [];
 
-        $debtorsArray[] = ['id', 'Names', 'ID_number', 'Account No', 'Loan amount', 'Loan balance', 'Loan Issue date', 'Loan Due date', 'Mobile'];
+        $debtorsArray[] = ['id', 'Names', 'ID number', 'Account No', 'Loan amount', 'Loan balance', 'Loan Issue date', 'Loan Due date', 'Mobile'];
 
         foreach ($debtors as $debtor){
             $debtorsArray[] = (array) $debtor;
